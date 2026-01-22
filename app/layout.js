@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const isLoginPage = pathname === '/login' || pathname === '/';
+  const isVisitorDetailPage = pathname.startsWith('/visitors/') && pathname.split('/').length === 3;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -42,6 +43,20 @@ export default function RootLayout({ children }) {
       >
         {isLoginPage ? (
           children
+        ) : isVisitorDetailPage ? (
+          <div className="flex min-h-screen">
+            <Sidebar 
+              isOpen={isSidebarOpen} 
+              closeSidebar={closeSidebar}
+              isCollapsed={isCollapsed}
+              toggleCollapse={toggleCollapse}
+            />
+            <div className={`flex-1 flex flex-col transition-all duration-300 ${isCollapsed ? 'lg:ml-16' : 'lg:ml-56'}`}>
+              <main className="flex-1 bg-white">
+                {children}
+              </main>
+            </div>
+          </div>
         ) : (
           <div className="flex min-h-screen">
             <Sidebar 

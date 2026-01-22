@@ -21,11 +21,11 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-5">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-5">
       <div className="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-          <p className="text-gray-600 text-sm">Sign in to your account to continue</p>
+          <p className="text-gray-600 text-sm">Login in to your account to continue</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -58,30 +58,30 @@ export default function Login() {
               required
             />
           </div>
-
+{/* 
           <div className="text-right">
             <a href="#" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium hover:underline">
               Forgot password?
             </a>
-          </div>
+          </div> */}
 
           <button 
             type="submit" 
             disabled={isLoading}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg font-semibold text-base hover:from-indigo-700 hover:to-purple-700 transform hover:-translate-y-0.5 hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full bg-gradient-to-r from-lime-700 to-emerald-500 text-white py-3 rounded-lg font-semibold text-base hover:from-lime-800 hover:to-emerald-600 transform hover:-translate-y-0.5 hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
           >
-            {isLoading ? 'Signing in...' : 'Sign In'}
+            {isLoading ? 'Loging in...' : 'Login In'}
           </button>
         </form>
 
-        <div className="mt-6 pt-6 border-t border-gray-200 text-center">
+        {/* <div className="mt-6 pt-6 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{' '}
             <a href="#" className="text-indigo-600 font-semibold hover:text-indigo-700 hover:underline">
               Sign up
             </a>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
