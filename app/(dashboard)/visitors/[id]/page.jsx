@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { useParams } from "next/navigation";
 
-import { visitors } from "../../../data/visitors";
-import VisitorDetails from "./components/VisitorDetails";
+import { visitors } from "@/data/visitors";
 import VisitorsTabBar from "./components/VisitorsTabBar";
 import VisitorRightSection from "./components/VisitorRightSection";
 import VisitorLeftSection from "./components/VisitorLeftSection";
@@ -35,7 +34,7 @@ export default function VisitorDetailPage() {
           <VisitorLeftSection />
         </aside>
 
-       {/* CENTER → CONVERSATION */}
+       {/* CENTER -> CONVERSATION */}
         <main className="flex-1 overflow-y-auto bg-gray-50 no-scrollbar">
           <ConversationTranscript visitor={visitor} />
         </main>

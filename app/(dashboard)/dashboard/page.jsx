@@ -1,8 +1,8 @@
-import StatsGrid from '@/components/dashboard/StatsGrid';
-import RecentActivity from '@/components/dashboard/RecentActivity';
-import RightSidebar from '@/components/dashboard/RightSidebar';
-import WelcomeSection from '@/components/dashboard/WelcomeSection';
-import WebsiteAnalytics from '@/components/dashboard/WebsiteAnalytics';
+import StatsGrid from "@/components/dashboard/StatsGrid";
+import RecentActivity from "@/components/dashboard/RecentActivity";
+import RightSidebar from "@/components/dashboard/RightSidebar";
+import WelcomeSection from "@/components/dashboard/WelcomeSection";
+import WebsiteAnalytics from "@/components/dashboard/WebsiteAnalytics";
 
 export default function DashboardPage() {
   return (

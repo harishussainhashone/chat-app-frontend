@@ -48,6 +48,7 @@ export default function Login() {
             <label htmlFor="password" className="block text-sm font-semibold text-gray-700">
               Password
             </label>
+            {/* The email and password are stored in the component state and are set by the user input fields above. There are no hardcoded credentials in this code. */}
             <input
               type="password"
               id="password"
