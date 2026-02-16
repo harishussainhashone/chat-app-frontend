@@ -2,9 +2,6 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  eslint: {
-    dirs: ["src"],
-  },
   images: {
     remotePatterns: [
       {

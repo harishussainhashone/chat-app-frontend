@@ -47,6 +47,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         };
 
         localStorage.setItem("auth_token", mockToken);
+        localStorage.setItem("auth_email", email);
 
         set({
           token: mockToken,
@@ -90,6 +91,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       console.error("Logout API failed, but clearing local session anyway.", error);
     } finally {
       localStorage.removeItem("auth_token");
+      localStorage.removeItem("auth_email");
       set({
         token: null,
         user: null,
@@ -112,6 +114,26 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
 
     try {
+      if (useMockAuth || token === "mock-token") {
+        const email = localStorage.getItem("auth_email") ?? "user@demo.com";
+        const mockUser = {
+          id: "mock-user",
+          name: email.split("@")[0] || "User",
+          email,
+        };
+        const mockCompany = {
+          id: "mock-company",
+          name: "Demo Company",
+        };
+        set({
+          token,
+          user: mockUser,
+          company: mockCompany,
+          loading: false,
+        });
+        return;
+      }
+
       // If we have a token, verify it by fetching the current company
       const company = await companiesService.getMe();
       set({
