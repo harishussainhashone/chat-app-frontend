@@ -30,6 +30,8 @@ export default function Sidebar({
   toggleCollapse,
 }: SidebarProps) {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [showStatusDropdown, setShowStatusDropdown] = useState(false);
+  const [status, setStatus] = useState('Online');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,7 +40,8 @@ export default function Sidebar({
 
   const mainMenuItems = [
     { icon: HiHome, label: "Dashboard", path: "/dashboard", badge: null },
-    { icon: HiUsers, label: "Chats", path: "/chats", badge: null },
+    { icon: HiUsers, label: "Visitors", path: "/visitors", badge: null },
+    { icon: HiUsers, label: "History", path: "/history", badge: null },
     { icon: HiChartBar, label: "Analytics", path: "/analytics", badge: null },
     {
       icon: HiComputerDesktop,
@@ -106,14 +109,33 @@ export default function Sidebar({
         </div>
 
         {!isCollapsed && (
-          <div className="px-4 py-3 shrink-0">
-            <button className="w-full flex items-center justify-between bg-sidebar-muted hover:bg-sidebar-hover rounded-full px-4 py-2.5 transition-colors">
+          <div className="px-4 py-3 shrink-0 relative">
+            <button
+              className="w-full flex items-center justify-between bg-sidebar-muted hover:bg-sidebar-hover rounded-full px-4 py-2.5 transition-colors"
+              onClick={() => setShowStatusDropdown((prev) => !prev)}
+            >
               <div className="flex items-center gap-2.5">
-                <div className="w-2.5 h-2.5 bg-green-400 rounded-full"></div>
-                <span className="text-sm font-medium">Online</span>
+                <div className={`w-2.5 h-2.5 rounded-full ${status === 'Online' ? 'bg-green-400' : status === 'Visible' ? 'bg-blue-400' : 'bg-gray-400'}`}></div>
+                <span className="text-sm font-medium">{status}</span>
               </div>
               <HiChevronDown className="text-sm text-sidebar-foreground-muted" />
             </button>
+            {showStatusDropdown && (
+              <div className="absolute left-0 right-0 mt-2 bg-sidebar-muted rounded-lg shadow-lg z-50">
+                <ul>
+                  {['Invisible', 'Online', 'Visible'].map((option) => (
+                    <li key={option}>
+                      <button
+                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-sidebar-hover rounded-lg transition-colors ${status === option ? 'font-semibold text-sidebar-foreground' : 'text-sidebar-foreground-muted'}`}
+                        onClick={() => { setStatus(option); setShowStatusDropdown(false); }}
+                      >
+                        {option}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
 

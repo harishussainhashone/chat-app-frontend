@@ -59,7 +59,7 @@ export default function ChatsList() {
                 <tr
                   key={chat.id}
                   className="hover:bg-gray-100 cursor-pointer transition-colors"
-                  onClick={() => router.push(`/chats/${chat.id}`)}
+                  onClick={() => router.push(`/visitors/${chat.id}`)}
                 >
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-3">
